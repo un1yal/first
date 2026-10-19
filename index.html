@@ -1,150 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-skin="flat">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Oliur</title>
-  <meta name="description" content="Designer and creator of stuff on the internet.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet">
+  <title>Traf</title>
+  <meta name="description" content="Personal site of traf. Experiments, works, and notes.">
+  <link rel="icon" href="assets/favicon.ico" sizes="48x48" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="page" class="site">
-    <header class="site-header">
-      <div class="header-inner">
-        <div class="site-branding">
-          <p class="site-title">
-            <a href="/" rel="home"><img src="assets/oliur-icon-logo.svg" alt="Oliur" width="30" height="32"></a>
-          </p>
-          <nav class="main-navigation" aria-label="Primary">
-            <ul>
-              <li><a href="#work">Work</a></li>
-              <li><a href="https://www.oliur.com/blog">Blog</a></li>
-              <li><a href="https://platsupply.com">Store</a></li>
-            </ul>
-          </nav>
-        </div>
+  <div class="noise" aria-hidden="true"></div>
+  <main>
+    <div class="desktop">
+      <div class="finder-shell">
+        <section class="finder" id="finder" data-menu-open="false" aria-label="Personal filesystem">
+          <aside class="finder-sidebar">
+            <nav class="tree" aria-label="Folder tree">
+              <div class="tree-bar">
+                <svg class="logo desktop-only" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2l6.5 3.6v7.4L12 19.8 5.5 15.2V7.8L12 4.2z"/></svg>
+                <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Open file tree" aria-expanded="false" aria-controls="file-tree">
+                  <span class="brand">traf</span>
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M4 13H20V16H4Z" class="menu-bar"/></svg>
+                </button>
+                <a class="mobile-handle" href="https://x.com/traf" target="_blank" rel="noopener noreferrer">[@traf]</a>
+              </div>
+              <div class="tree-branches" id="file-tree"></div>
+            </nav>
+            <button type="button" class="privacy-btn" id="privacy-btn" aria-label="Privacy mode" aria-pressed="true" title="Turn privacy off (/)">
+              <span class="privacy-dot"></span>
+            </button>
+          </aside>
+
+          <div class="finder-preview">
+            <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
+            <div class="finder-content" id="content"></div>
+          </div>
+        </section>
       </div>
-    </header>
-
-    <main class="homepage-content">
-      <section class="about section">
-        <img class="about-headshot" src="assets/oliur-headshot-2025.jpg" alt="Oliur" width="100" height="100">
-        <h1><span class="bio-bold">I'm Oliur -- a designer, creator and investor.</span></h1>
-        <p>I started as a designer and handling creative direction for companies, but now I do a mix of everything from video production to advising and investing in companies. I also make YouTube videos.</p>
-      </section>
-
-      <section class="email newsletter section">
-        <div>
-          <h5>The Manual</h5>
-          <p>A monthly newsletter sharing experiences, stories and links to things I find interesting. I don’t share this stuff anywhere else.</p>
-          <form class="oliur-newsletter-form" novalidate>
-            <input autocomplete="email" aria-label="Email" placeholder="Enter your email address" maxlength="200" name="email" required type="email">
-            <button type="submit">Subscribe to The Manual</button>
-          </form>
-          <p class="form-msg" hidden></p>
-        </div>
-        <a class="read-previous-newsletter" href="https://manual.oliur.com/" target="_blank" rel="noopener">Read previous newsletters here -></a>
-      </section>
-
-      <section class="work section" id="work">
-        <div class="section-title">Creating</div>
-        <div class="work-item">
-          <h5><a target="_blank" rel="noopener" href="https://platsupply.com">PlatSupply -></a></h5>
-          <p>Online digital product marketplace. Wallpapers, presets and courses.</p>
-        </div>
-        <div class="work-item">
-          <h5><a href="https://www.oliur.com/newsletter">The Manual -></a></h5>
-          <p>A monthly newsletter sharing stories, experiences and links to interesting things.</p>
-        </div>
-        <div class="work-item">
-          <h5><a target="_blank" rel="noopener" href="https://pop.site?utm_source=oliur_com">pop site -></a></h5>
-          <p>An aesthetic website builder perfect for those looking for something easy to use.</p>
-        </div>
-        <div class="work-item">
-          <h5><a target="_blank" rel="noopener" href="https://youtube.com/oliur">YouTube / Tech -></a></h5>
-          <p>Uploading videos covering premium tech, design and lifestyle.</p>
-        </div>
-        <div class="work-item">
-          <h5><a target="_blank" rel="noopener" href="https://youtube.com/oliuronline">YouTube / Business and AI -></a></h5>
-          <p>Uploading videos covering business, AI, tools and other related topics.</p>
-        </div>
-        <div class="work-item">
-          <h5><a target="_blank" rel="noopener" href="https://digitalcreator.club">Digital Creator Club -></a></h5>
-          <p>Members only club for creators, entrepreneurs, makers and more.</p>
-        </div>
-        <div class="work-item">
-          <h5><a target="_blank" rel="noopener" href="https://iphonecreatorkit.com">iPhone Creator Kit -></a></h5>
-          <p>A kit putting together my favourite iPhone settings, how I take high quality iPhone pictures, and a collection of my presets.</p>
-        </div>
-      </section>
-
-      <section class="other-stuff section" id="other-stuff">
-        <div class="section-title">Other stuff</div>
-        <div class="work-item">
-          <h5><a target="_blank" rel="noopener" href="https://platsupply.com/downloads/category/wallpapers/?utm_source=oliur_homepage">Wallpapers -></a></h5>
-          <p>See all of the wallpapers pack I currently have available.</p>
-        </div>
-        <div class="work-item">
-          <h5><a target="_blank" rel="noopener" href="https://platsupply.com/downloads/category/presets/?utm_source=oliur_homepage">Presets -></a></h5>
-          <p>All of the photography presets I have for iPhone and mirrorless cameras.</p>
-        </div>
-        <div class="work-item">
-          <h5><a href="https://www.oliur.com/video-photo-setup">Camera gear -></a></h5>
-          <p>A breakdown of all of the camera gear I use to make content across my socials.</p>
-        </div>
-        <div class="work-item">
-          <h5><a href="https://www.oliur.com/resources">See all resources -></a></h5>
-          <p>Everything I've put together over the years.</p>
-        </div>
-      </section>
-
-      <section class="homepage-blog section">
-        <div class="section-title">Posts</div>
-        <div class="posts-list">
-          <div class="post-item">
-            <a class="post-thumbnail" href="https://www.oliur.com/best-iphone-18-pro-accessories">
-              <img src="assets/post1.jpg" width="150" height="150" alt="">
-            </a>
-            <div class="post-content">
-              <h5><a href="https://www.oliur.com/best-iphone-18-pro-accessories">Best iPhone 18 Pro Accessories in 2026 (I Actually Use) -></a></h5>
-              <div class="post-excerpt"><p>I've got a pile of iPhone 18 Pro accessories on…</p></div>
-            </div>
-          </div>
-          <div class="post-item">
-            <a class="post-thumbnail" href="https://www.oliur.com/the-best-iphone-camera-settings-for-amazing-photos-2026">
-              <img src="assets/post2.jpg" width="150" height="150" alt="">
-            </a>
-            <div class="post-content">
-              <h5><a href="https://www.oliur.com/the-best-iphone-camera-settings-for-amazing-photos-2026">The Best iPhone Camera Settings for Amazing Photos (2026) -></a></h5>
-              <div class="post-excerpt"><p>I'm obsessed with getting the best possible photos out of…</p></div>
-            </div>
-          </div>
-          <div class="post-item">
-            <a class="post-thumbnail" href="https://www.oliur.com/how-to-get-ahead-with-ai">
-              <img src="assets/post3.jpg" width="150" height="150" alt="">
-            </a>
-            <div class="post-content">
-              <h5><a href="https://www.oliur.com/how-to-get-ahead-with-ai">How to Get Ahead With AI: A Simple 6-Step System for Work and Life -></a></h5>
-              <div class="post-excerpt"><p>I used to be pretty anti AI. It didn't feel…</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="more-blog"><a href="https://www.oliur.com/blog">See all posts -></a></div>
-      </section>
-
-      <footer class="homepage-footer">
-        <div class="elsewhere">
-          <a href="https://instagram.com/ultralinx" target="_blank" rel="noopener" class="btn"><img src="assets/ig.svg" alt=""> ultralinx</a>
-          <a href="https://instagram.com/oliursvisuals" target="_blank" rel="noopener" class="btn"><img src="assets/ig.svg" alt=""> oliursvisuals</a>
-          <a href="https://twitter.com/ultralinx" target="_blank" rel="noopener" class="btn"><img src="assets/tw.svg" alt=""> ultralinx</a>
-        </div>
-        <div class="copyright">&copy; 2026 Oliur. All Rights Reserved.</div>
-      </footer>
-    </main>
-  </div>
+    </div>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
