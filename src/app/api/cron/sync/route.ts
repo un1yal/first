@@ -31,8 +31,8 @@ export async function GET(request: Request) {
     });
   }
 
-  const { createServiceClient } = await import("@/lib/supabase/server");
-  const supabase = createServiceClient();
+  const { createClient } = await import("@/lib/supabase/server");
+  const supabase = await createClient();
 
   const { data: creators } = await supabase
     .from("creator_accounts")
