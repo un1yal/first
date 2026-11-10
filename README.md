@@ -78,7 +78,7 @@ npm run build
 
 1. Import the repo into Vercel.
 2. Set environment variables.
-3. Deploy. `vercel.json` registers a cron hitting `/api/cron/sync` every 6 hours.
+3. Deploy. `vercel.json` registers a daily cron (`0 0 * * *`) hitting `/api/cron/sync` (Vercel Hobby limit: at most once per day).
 4. Set `CRON_SECRET` and ensure Vercel sends `Authorization: Bearer $CRON_SECRET` (Vercel Cron does this when configured for protected routes — also callable manually for testing).
 
 ### Free-tier notes
