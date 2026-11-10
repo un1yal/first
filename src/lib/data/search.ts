@@ -40,12 +40,17 @@ export async function searchCreators(rawQuery: string) {
   }
 
   let suggestions: Array<{ username: string; display_name: string }> = [];
+  // Suggestions are optional — never fail the primary username lookup on rate limits.
   if (q.length >= 2) {
-    const search = await searchUsers(q);
-    suggestions = (search.data.users ?? []).slice(0, 5).map((u) => ({
-      username: u.userName,
-      display_name: u.name ?? u.userName,
-    }));
+    try {
+      const search = await searchUsers(q);
+      suggestions = (search.data.users ?? []).slice(0, 5).map((u) => ({
+        username: u.userName,
+        display_name: u.name ?? u.userName,
+      }));
+    } catch {
+      suggestions = [];
+    }
   }
 
   return {
