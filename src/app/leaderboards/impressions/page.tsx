@@ -1,0 +1,77 @@
+import Link from "next/link";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { getHomepageData } from "@/lib/data/homepage";
+import { demoStore } from "@/lib/demo/store";
+import { formatNumber } from "@/lib/utils";
+
+export const dynamic = "force-dynamic";
+
+export default async function ImpressionsLeaderboardPage() {
+  const home = await getHomepageData();
+  const all = demoStore
+    .getLeaderboards()
+    .filter((l) => l.leaderboard_type === "impressions")
+    .sort((a, b) => a.rank - b.rank)
+    .map((row) => ({
+      ...row,
+      creator: demoStore.creators.find((c) => c.id === row.creator_account_id)!,
+    }));
+
+  return (
+    <div className="flex min-h-dvh flex-col">
+      <SiteHeader />
+      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Highest impressions — last 24 hours
+            </h1>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Ranked by view/impression deltas between timestamped snapshots.
+              Missing coverage excludes a creator rather than treating gaps as zero.
+            </p>
+          </div>
+          {home.isDemo ? <Badge variant="warning">Demo data</Badge> : null}
+        </div>
+
+        <div className="mt-8 space-y-3">
+          {all.map((entry) => (
+            <Link
+              key={entry.id}
+              href={`/creator/${entry.creator.username}`}
+              className="flex items-center gap-4 rounded-xl border border-border bg-card p-4 hover:bg-accent"
+            >
+              <span className="font-brand w-8 text-sm text-muted-foreground">
+                #{entry.rank}
+              </span>
+              <Avatar>
+                <AvatarImage src={entry.creator.profile_image_url ?? undefined} />
+                <AvatarFallback>
+                  {(entry.creator.display_name ?? entry.creator.username)
+                    .slice(0, 2)
+                    .toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+              <div className="min-w-0 flex-1">
+                <p className="truncate font-medium">{entry.creator.display_name}</p>
+                <p className="truncate text-sm text-muted-foreground">
+                  @{entry.creator.username}
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="font-medium tabular-nums">
+                  {formatNumber(Number(entry.metric_value))}
+                </p>
+                <p className="text-[11px] text-muted-foreground">24h impressions</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}
