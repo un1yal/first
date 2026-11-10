@@ -35,9 +35,10 @@ function LoginForm() {
       const supabase = createClient();
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
+      // Cookie session is written by @supabase/ssr createBrowserClient — refresh RSC/proxy.
       toast.success("Signed in");
-      router.push(next);
       router.refresh();
+      router.push(next.startsWith("/") ? next : "/dashboard");
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Login failed");
     } finally {

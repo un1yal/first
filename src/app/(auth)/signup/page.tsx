@@ -32,17 +32,23 @@ export default function SignupPage() {
       }
       const { createClient } = await import("@/lib/supabase/client");
       const supabase = createClient();
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: { display_name: displayName },
-          emailRedirectTo: `${window.location.origin}/onboarding`,
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=/onboarding`,
         },
       });
       if (error) throw error;
-      toast.success("Check your email to verify your account");
-      router.push("/onboarding");
+      if (data.session) {
+        toast.success("Account created");
+        router.refresh();
+        router.push("/onboarding");
+      } else {
+        toast.success("Check your email to verify your account");
+        router.push("/login");
+      }
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Signup failed");
     } finally {

@@ -35,6 +35,7 @@ export default function OnboardingPage() {
     try {
       const res = await fetch("/api/creators/lookup", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: normalizeUsername(username) }),
       });
@@ -54,10 +55,16 @@ export default function OnboardingPage() {
     try {
       const res = await fetch("/api/creators/claim/start", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: normalizeUsername(username) }),
       });
       const data = await res.json();
+      if (res.status === 401) {
+        toast.error("Session missing — please log in again");
+        router.push("/login?next=/onboarding");
+        return;
+      }
       if (!res.ok) throw new Error(data.error || "Could not start verification");
       setCode(data.code);
       setChallengeId(data.challengeId);
@@ -77,6 +84,7 @@ export default function OnboardingPage() {
     try {
       const res = await fetch("/api/creators/claim/verify", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           username: normalizeUsername(username),
@@ -85,6 +93,11 @@ export default function OnboardingPage() {
         }),
       });
       const data = await res.json();
+      if (res.status === 401) {
+        toast.error("Session missing — please log in again");
+        router.push("/login?next=/onboarding");
+        return;
+      }
       if (!res.ok) throw new Error(data.error || "Verification failed");
       setStep("done");
       toast.success("Account claimed");
