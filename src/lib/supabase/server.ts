@@ -5,6 +5,12 @@ import {
   getSupabaseUrl,
 } from "@/lib/supabase/config";
 
+const COOKIE_OPTIONS = {
+  path: "/",
+  sameSite: "lax" as const,
+  maxAge: 60 * 60 * 24 * 400,
+};
+
 /** Server Supabase client for user sessions (publishable key only). */
 export async function createClient() {
   const cookieStore = await cookies();
@@ -12,6 +18,7 @@ export async function createClient() {
   const key = getSupabasePublishableKey();
 
   return createServerClient(url, key, {
+    cookieOptions: COOKIE_OPTIONS,
     cookies: {
       getAll() {
         return cookieStore.getAll();
@@ -19,10 +26,13 @@ export async function createClient() {
       setAll(cookiesToSet) {
         try {
           cookiesToSet.forEach(({ name, value, options }) => {
-            cookieStore.set(name, value, options);
+            cookieStore.set(name, value, {
+              ...COOKIE_OPTIONS,
+              ...options,
+            });
           });
         } catch {
-          // Called from a Server Component — middleware will refresh sessions.
+          // Server Components cannot always write cookies; proxy refreshes them.
         }
       },
     },

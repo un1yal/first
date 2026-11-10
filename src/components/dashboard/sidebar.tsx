@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   BarChart3,
   FileText,
@@ -30,6 +30,16 @@ const links = [
 
 export function DashboardSidebar({ isAdmin = false }: { isAdmin?: boolean }) {
   const pathname = usePathname();
+  const router = useRouter();
+
+  async function signOut() {
+    await fetch("/api/auth/signout", {
+      method: "POST",
+      credentials: "include",
+    });
+    router.refresh();
+    router.push("/");
+  }
 
   return (
     <aside className="flex h-full w-60 shrink-0 flex-col border-r border-border bg-sidebar">
@@ -72,11 +82,14 @@ export function DashboardSidebar({ isAdmin = false }: { isAdmin?: boolean }) {
         ) : null}
       </nav>
       <div className="border-t border-border p-3">
-        <Button asChild variant="ghost" className="w-full justify-start gap-2">
-          <Link href="/api/auth/signout">
-            <LogOut className="h-4 w-4" />
-            Log out
-          </Link>
+        <Button
+          type="button"
+          variant="ghost"
+          className="w-full justify-start gap-2"
+          onClick={() => void signOut()}
+        >
+          <LogOut className="h-4 w-4" />
+          Log out
         </Button>
       </div>
     </aside>
