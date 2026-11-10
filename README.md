@@ -51,14 +51,13 @@ See `.env.example`:
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
 TWITTERAPI_IO_KEY=
 NEXT_PUBLIC_APP_URL=
 CRON_SECRET=
 ```
 
-Never expose `SUPABASE_SERVICE_ROLE_KEY` or `TWITTERAPI_IO_KEY` with `NEXT_PUBLIC_`.
+`NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` are public/client-safe (project **statisticx**). Never put a service-role/secret key in the repo or in `NEXT_PUBLIC_` variables. Keep `TWITTERAPI_IO_KEY` server-only.
 
 ## Local development
 

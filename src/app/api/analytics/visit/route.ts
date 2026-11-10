@@ -25,8 +25,8 @@ export async function POST(request: Request) {
     if (isDemoMode()) {
       demoStore.trackVisit(visitorId, path, isAdmin);
     } else {
-      const { createServiceClient } = await import("@/lib/supabase/server");
-      const supabase = createServiceClient();
+      const { createClient } = await import("@/lib/supabase/server");
+      const supabase = await createClient();
       await supabase.from("visitor_events").insert({
         anonymous_visitor_id: visitorId,
         page_path: path,
