@@ -35,7 +35,7 @@ export function StatisticXWordmark({
  return (
  <span className={cn("inline-flex items-center gap-2 text-foreground", className)}>
  {showMark ? <StatisticXMark className={markClassName} /> : null}
- <span className="text-[15px] font-medium tracking-tight">StatisticX</span>
+ <span className="font-brand text-[15px] font-medium">StatisticX</span>
  </span>
  );
 }
@@ -62,7 +62,7 @@ export function StatisticXWorkspacePill({
  <span className="flex h-6 w-6 items-center justify-center bg-nested">
  <StatisticXMark className="h-3.5 w-3.5" />
  </span>
- <span className="text-sm font-medium tracking-tight">StatisticX</span>
+ <span className="font-brand text-sm font-medium">StatisticX</span>
  </span>
  <ChevronsUpDown className="h-3.5 w-3.5 text-muted-foreground" strokeWidth={1.75} />
  </Comp>

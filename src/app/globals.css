@@ -1,7 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Departure Mono";
+  src: url("/fonts/departure-mono.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
  /* StatisticX — Lunor light */
+ --font-departure: "Departure Mono", ui-monospace, Menlo, Consolas, monospace;
+ --font-brand: var(--font-departure);
  --background: #f5f5f4;
  --foreground: #111111;
  --card: #ffffff;
@@ -111,8 +121,9 @@
  --color-hover: var(--hover);
  --color-button: var(--button);
  --color-button-hover: var(--button-hover);
- --font-sans: var(--font-geist-sans);
- --font-mono: var(--font-geist-mono);
+ --font-sans: var(--font-departure);
+ --font-mono: var(--font-departure);
+ --font-brand: var(--font-departure);
  --radius-sm: 0;
  --radius-md: 0;
  --radius-lg: 0;
@@ -141,12 +152,27 @@ html.dark {
 body {
  background: var(--background);
  color: var(--foreground);
- font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+ font-family: var(--font-departure);
  font-weight: 400;
+ letter-spacing: 0;
  line-height: 1.55;
  min-height: 100dvh;
  -webkit-font-smoothing: antialiased;
  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+ font: inherit;
+ letter-spacing: inherit;
+}
+
+.font-brand {
+ font-family: var(--font-brand);
+ letter-spacing: 0.02em;
+ text-transform: uppercase;
 }
 
 .surface-card {
