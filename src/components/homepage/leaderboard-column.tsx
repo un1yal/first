@@ -39,7 +39,7 @@ export function LeaderboardColumn({
             <Link
               key={`${entry.rank}-${entry.creator.id}`}
               href={`/creator/${entry.creator.username}`}
-              className="corner-brackets group rounded-xl border border-border bg-card p-4 transition-colors hover:bg-[rgba(255,255,255,0.03)]"
+              className="group rounded-xl border border-border bg-card p-4 transition-colors hover:bg-[#242426]"
             >
               <div className="flex items-center gap-3">
                 <span className="w-7 text-sm font-light text-[#5a5a5a]">

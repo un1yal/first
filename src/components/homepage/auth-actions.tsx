@@ -9,7 +9,7 @@ export function HomepageAuthActions({
   if (isAuthenticated) {
     return (
       <div className="flex w-full justify-center gap-3">
-        <Button asChild variant="glass" className="min-w-32 uppercase tracking-[0.12em]">
+        <Button asChild className="min-w-32">
           <Link href="/dashboard">Dashboard</Link>
         </Button>
       </div>
@@ -18,18 +18,10 @@ export function HomepageAuthActions({
 
   return (
     <div className="flex w-full justify-center gap-3">
-      <Button
-        asChild
-        variant="outline"
-        className="min-w-28 uppercase tracking-[0.12em]"
-      >
+      <Button asChild variant="outline" className="min-w-28">
         <Link href="/login">Log in</Link>
       </Button>
-      <Button
-        asChild
-        variant="glass"
-        className="min-w-28 uppercase tracking-[0.12em]"
-      >
+      <Button asChild className="min-w-28">
         <Link href="/signup">Sign up</Link>
       </Button>
     </div>

@@ -71,7 +71,7 @@ export default async function DiscoverPage() {
             <Link
               key={creator.id}
               href={`/creator/${creator.username}`}
-              className="corner-brackets rounded-xl border border-border bg-card p-5 transition-colors hover:bg-[rgba(255,255,255,0.03)]"
+              className="rounded-xl border border-border bg-card p-5 transition-colors hover:bg-[#242426]"
             >
               <div className="flex items-center gap-3">
                 <Avatar>

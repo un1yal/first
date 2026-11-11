@@ -5,12 +5,14 @@ export function Metric({
   value,
   hint,
   trend,
+  icon,
   className,
 }: {
   label: string;
   value: number | string | null | undefined;
   hint?: string;
   trend?: "up" | "down" | "neutral";
+  icon?: React.ReactNode;
   className?: string;
 }) {
   const display =
@@ -19,27 +21,35 @@ export function Metric({
   return (
     <div
       className={cn(
-        "corner-brackets rounded-xl border border-border bg-card p-5 sm:p-6",
+        "rounded-2xl border border-border bg-card p-5 sm:p-6",
         className,
       )}
     >
-      <div className="flex items-center justify-between gap-2">
-        <p className="text-sm text-muted-foreground">{label}</p>
-        {trend ? (
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <p className="text-sm text-muted-foreground">{label}</p>
+          <p className="mt-3 text-3xl font-medium tracking-tight tabular-nums text-foreground">
+            {display}
+          </p>
+          {hint ? (
+            <p className="mt-2 text-xs text-muted-foreground">{hint}</p>
+          ) : null}
+        </div>
+        {icon ? (
+          <div className="nested-tile flex h-12 w-12 shrink-0 items-center justify-center text-muted-foreground">
+            {icon}
+          </div>
+        ) : trend ? (
           <span
             className={cn(
-              "h-1.5 w-1.5 rounded-full",
-              trend === "up" && "bg-[#ededed]",
+              "mt-1 h-1.5 w-1.5 rounded-full",
+              trend === "up" && "bg-[#f2f2f2]",
               trend === "down" && "bg-destructive",
-              trend === "neutral" && "bg-[#5a5a5a]",
+              trend === "neutral" && "bg-[#5a5a5e]",
             )}
           />
         ) : null}
       </div>
-      <p className="mt-3 text-3xl font-light tracking-tight tabular-nums text-foreground">
-        {display}
-      </p>
-      {hint ? <p className="mt-2 text-xs text-[#5a5a5a]">{hint}</p> : null}
     </div>
   );
 }

@@ -89,9 +89,9 @@ npm run build
 
 ## Design
 
-- Dark monochrome StatisticX UI inspired by APEX: near-black canvas (`#0B0B0B`), `#131313` panels, hairline borders, white/gray text only.
-- Michroma display wordmark (`STATISTICX`) + Geist body; corner-bracket focus motif on active/hover controls; glass primary actions with keyboard chips.
-- Thin white/gray charts with faint fills; generous negative space; no color accents.
+- Charcoal Lunor-inspired StatisticX UI: page `#18181A`, shell `#1C1C1E`, cards `#202022`, borders `#2A2A2D`, radius 12–16px.
+- Clean Geist wordmark with crescent mark in a workspace-switcher pill; sentence-case UI; gray secondary buttons.
+- Hatch-filled follower charts with dashed comparison lines; sketch landing layout retained.
 
 ## Testing
 

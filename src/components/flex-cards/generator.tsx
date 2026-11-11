@@ -95,11 +95,11 @@ export function FlexCardGenerator({
           ref={ref}
           className={cn(
             "mx-auto flex h-[420px] w-[680px] flex-col justify-between rounded-xl p-8",
-            template === "dark" && "bg-[#0b0b0b] text-[#ededed]",
-            template === "minimal" && "bg-[#131313] text-[#ededed]",
-            template === "light" && "bg-[#ededed] text-[#0b0b0b]",
+            template === "dark" && "bg-[#18181a] text-[#f2f2f2]",
+            template === "minimal" && "bg-[#1c1c1e] text-[#f2f2f2]",
+            template === "light" && "bg-[#f2f2f2] text-[#18181a]",
             template === "analytics" &&
-              "bg-[linear-gradient(160deg,#0b0b0b,#131313)] text-[#ededed]",
+              "bg-[linear-gradient(160deg,#18181a,#1c1c1e)] text-[#f2f2f2]",
           )}
         >
           <div className="flex items-start justify-between">
@@ -118,7 +118,7 @@ export function FlexCardGenerator({
                 <p className="text-sm opacity-60">@{creator.username}</p>
               </div>
             </div>
-            <p className="font-display text-[10px] tracking-[0.22em] opacity-70">
+            <p className="text-[11px] font-medium tracking-tight opacity-70">
               StatisticX
             </p>
           </div>

@@ -42,7 +42,7 @@ export default async function EngagementLeaderboardPage() {
             <Link
               key={entry.id}
               href={`/creator/${entry.creator.username}`}
-              className="corner-brackets flex items-center gap-4 rounded-xl border border-border bg-card p-5 hover:bg-[rgba(255,255,255,0.03)]"
+              className="flex items-center gap-4 rounded-xl border border-border bg-card p-5 hover:bg-[#242426]"
             >
               <span className="w-8 text-sm font-medium tabular-nums text-muted-foreground">
                 #{entry.rank}

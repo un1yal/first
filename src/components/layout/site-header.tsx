@@ -8,7 +8,7 @@ export function SiteHeader({
   isAuthenticated?: boolean;
 }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-[#0b0b0b]/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-[#18181a]/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" aria-label="StatisticX home">
           <StatisticXWordmark />
@@ -29,7 +29,7 @@ export function SiteHeader({
               <Button asChild variant="ghost" size="sm">
                 <Link href="/login">Log in</Link>
               </Button>
-              <Button asChild size="sm" variant="glass">
+              <Button asChild size="sm">
                 <Link href="/signup">Sign up</Link>
               </Button>
             </>

@@ -1,3 +1,4 @@
+import { LayoutGrid } from "lucide-react";
 import { DashboardSidebar } from "@/components/dashboard/sidebar";
 import { Badge } from "@/components/ui/badge";
 import { isDemoMode } from "@/lib/data/mode";
@@ -17,13 +18,12 @@ export default function DashboardLayout({
       </div>
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="flex h-14 items-center justify-between border-b border-border px-4 md:px-8">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <div className="md:hidden">
-              <StatisticXWordmark markClassName="h-5 w-5" />
+              <StatisticXWordmark markClassName="h-4 w-4" />
             </div>
-            <p className="text-sm font-light italic text-muted-foreground">
-              Home
-            </p>
+            <LayoutGrid className="hidden h-4 w-4 text-muted-foreground md:block" strokeWidth={1.6} />
+            <p className="text-sm font-medium text-foreground">Dashboard</p>
           </div>
           {demo ? <Badge variant="warning">Demo</Badge> : null}
         </div>
