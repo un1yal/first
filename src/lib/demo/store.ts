@@ -32,12 +32,12 @@ function hoursAgo(h: number) {
 const demoProfiles: Profile[] = [
   {
     id: "00000000-0000-4000-8000-000000000001",
-    email: "admin@analyticx.app",
+    email: "admin@statisticx.app",
     display_name: "Admin",
     avatar_url: null,
     role: "admin",
     is_suspended: false,
-    theme_preference: "dark",
+    theme_preference: "light",
     created_at: hoursAgo(240),
     updated_at: hoursAgo(1),
   },
@@ -89,7 +89,7 @@ for (const creator of demoCreators) {
       lang: "en",
       is_reply: false,
       media_type: null,
-      hashtags: ["analyticx"],
+      hashtags: ["statisticx"],
       mentions: [],
       created_at: hoursAgo(i * 8 + 4),
       updated_at: hoursAgo(1),

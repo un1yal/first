@@ -143,7 +143,7 @@ describe("claim verification helpers", () => {
   it("rejects expired and invalid challenges via verify helper contracts", async () => {
     const { verifyClaimChallenge } = await import("@/lib/claim/verification");
     const expired = await verifyClaimChallenge({
-      username: "analyticx",
+      username: "statisticx",
       expectedCode: "AX-TESTCODE",
       expectedHash: await hashVerificationCode("AX-TESTCODE"),
       expiresAt: new Date(Date.now() - 1000).toISOString(),

@@ -7,9 +7,9 @@ export const SUPABASE_URL_ENV = "NEXT_PUBLIC_SUPABASE_URL";
 export const SUPABASE_PUBLISHABLE_KEY_ENV = "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY";
 
 /** Build-time defaults when env vars are unset (public values only). */
-const DEFAULT_SUPABASE_URL = "https://acyzomxqrxhdthtthnvd.supabase.co";
+const DEFAULT_SUPABASE_URL = "https://YOUR_PROJECT.supabase.co";
 const DEFAULT_SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_NEfkuEeP3-1At0KOXnwwpw_F5KhZk_o";
+  "YOUR_SUPABASE_PUBLISHABLE_KEY";
 
 export function getSupabaseUrl(): string {
   return process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() || DEFAULT_SUPABASE_URL;

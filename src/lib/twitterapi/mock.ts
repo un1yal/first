@@ -19,15 +19,15 @@ const mockUsers: Record<string, TwitterApiUserInfo> = {
     favouritesCount: 1000,
     createdAt: "2009-06-02T20:12:29.000000Z",
   },
-  analyticx: {
+  statisticx: {
     type: "user",
     id: "1000000001",
-    userName: "analyticx",
+    userName: "statisticx",
     name: "StatisticX",
-    url: "https://x.com/analyticx",
+    url: "https://x.com/statisticx",
     isBlueVerified: false,
     profilePicture: "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
-    description: "Discover creators. Measure influence. Find your next promotion. [AX-DEMO]",
+    description: "Discover creators. Measure influence. Find your next promotion. [SX-DEMO]",
     followers: 12840,
     following: 210,
     statusesCount: 420,
@@ -100,7 +100,7 @@ function mockTweets(user: TwitterApiUserInfo): TwitterApiTweet[] {
       isReply: false,
       author: user,
       entities: {
-        hashtags: [{ text: "analyticx" }],
+        hashtags: [{ text: "statisticx" }],
         user_mentions: [],
       },
     };
@@ -126,7 +126,7 @@ export function getMockResponse<T>(
     const user =
       Object.values(mockUsers).find((u) => u.id === userId) ||
       mockUsers[userName] ||
-      mockUsers.analyticx;
+      mockUsers.statisticx;
     const tweets = mockTweets(user);
     return {
       status: "success",
