@@ -89,9 +89,9 @@ npm run build
 
 ## Design
 
-- Charcoal Lunor-inspired StatisticX UI: page `#18181A`, shell `#1C1C1E`, cards `#202022`, borders `#2A2A2D`, radius 12–16px.
-- Clean Geist wordmark with crescent mark in a workspace-switcher pill; sentence-case UI; gray secondary buttons.
-- Hatch-filled follower charts with dashed comparison lines; sketch landing layout retained.
+- Charcoal Lunor-inspired StatisticX UI with sharp corners (`border-radius: 0` everywhere).
+- Dual light/dark palettes via CSS variables + `next-themes` (system default, persisted, no-flash boot script).
+- Clean Geist wordmark with crescent mark in a workspace-switcher pill; hatch-filled follower charts; sketch landing layout retained.
 
 ## Testing
 

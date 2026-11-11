@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import {
   Area,
   AreaChart,
@@ -10,6 +11,14 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+
+function cssVar(name: string, fallback: string) {
+  if (typeof window === "undefined") return fallback;
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
+  return value || fallback;
+}
 
 export function TrendChart({
   data,
@@ -24,9 +33,11 @@ export function TrendChart({
   label?: string;
   compareLabel?: string;
 }) {
+  const { resolvedTheme } = useTheme();
+
   if (!data.length) {
     return (
-      <div className="flex h-64 items-center justify-center rounded-2xl border border-dashed border-border text-sm text-muted-foreground">
+      <div className="flex h-64 items-center justify-center border border-dashed border-border text-sm text-muted-foreground">
         Not enough historical data yet.
       </div>
     );
@@ -39,75 +50,86 @@ export function TrendChart({
     return { ...row, [compareKey]: Math.round(lag * 0.94) };
   });
 
-  return (
-    <div className="h-72 w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart
-          data={withCompare}
-          margin={{ top: 8, right: 8, left: 0, bottom: 0 }}
-        >
-          <defs>
-            <pattern
-              id="sxHatch"
-              patternUnits="userSpaceOnUse"
-              width="8"
-              height="8"
-              patternTransform="rotate(45)"
-            >
-              <line
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="8"
-                stroke="#9a9a9e"
-                strokeWidth="1.25"
-                opacity="0.45"
-              />
-            </pattern>
-          </defs>
-          <CartesianGrid stroke="#2a2a2d" vertical={false} />
-          <XAxis
-            dataKey="date"
-            tick={{ fill: "#9a9a9e", fontSize: 12 }}
-            axisLine={false}
-            tickLine={false}
-          />
-          <YAxis
-            tick={{ fill: "#9a9a9e", fontSize: 12 }}
-            axisLine={false}
-            tickLine={false}
-            width={42}
-          />
-          <Tooltip
-            contentStyle={{
-              background: "#202022",
-              border: "1px solid #2a2a2d",
-              borderRadius: 12,
-              boxShadow: "0 12px 40px rgba(0,0,0,0.35)",
-              fontSize: 12,
-              color: "#f2f2f2",
-            }}
-            labelStyle={{ color: "#9a9a9e" }}
-          />
-          <Area
-            type="monotone"
-            dataKey={dataKey}
-            name={label}
-            stroke="#f2f2f2"
-            fill="url(#sxHatch)"
-            strokeWidth={2.25}
-          />
-          <Line
-            type="monotone"
-            dataKey={compareKey}
-            name={compareLabel}
-            stroke="#9a9a9e"
-            strokeWidth={1.5}
-            strokeDasharray="5 5"
-            dot={false}
-          />
-        </AreaChart>
-      </ResponsiveContainer>
-    </div>
-  );
+  // Re-read CSS variables whenever theme changes.
+  void resolvedTheme;
+  const line = cssVar("--chart-1", "#111111");
+  const compare = cssVar("--chart-2", "#6b6b70");
+  const grid = cssVar("--chart-grid", "#e4e4e7");
+  const hatch = cssVar("--chart-hatch", "#6b6b70");
+  const labelColor = cssVar("--muted-foreground", "#6b6b70");
+  const tooltipBg = cssVar("--card", "#ffffff");
+  const tooltipBorder = cssVar("--border", "#e4e4e7");
+  const tooltipFg = cssVar("--foreground", "#111111");
+
+ return (
+ <div className="h-72 w-full">
+ <ResponsiveContainer width="100%" height="100%">
+ <AreaChart
+ data={withCompare}
+ margin={{ top: 8, right: 8, left: 0, bottom: 0 }}
+ >
+ <defs>
+ <pattern
+ id="sxHatch"
+ patternUnits="userSpaceOnUse"
+ width="8"
+ height="8"
+ patternTransform="rotate(45)"
+ >
+ <line
+ x1="0"
+ y1="0"
+ x2="0"
+ y2="8"
+ stroke={hatch}
+ strokeWidth="1.25"
+ opacity="0.45"
+ />
+ </pattern>
+ </defs>
+ <CartesianGrid stroke={grid} vertical={false} />
+ <XAxis
+ dataKey="date"
+ tick={{ fill: labelColor, fontSize: 12 }}
+ axisLine={false}
+ tickLine={false}
+ />
+ <YAxis
+ tick={{ fill: labelColor, fontSize: 12 }}
+ axisLine={false}
+ tickLine={false}
+ width={42}
+ />
+ <Tooltip
+ contentStyle={{
+ background: tooltipBg,
+ border: `1px solid ${tooltipBorder}`,
+ borderRadius: 0,
+ boxShadow: "0 12px 40px rgba(0,0,0,0.12)",
+ fontSize: 12,
+ color: tooltipFg,
+ }}
+ labelStyle={{ color: labelColor }}
+ />
+ <Area
+ type="monotone"
+ dataKey={dataKey}
+ name={label}
+ stroke={line}
+ fill="url(#sxHatch)"
+ strokeWidth={2.25}
+ />
+ <Line
+ type="monotone"
+ dataKey={compareKey}
+ name={compareLabel}
+ stroke={compare}
+ strokeWidth={1.5}
+ strokeDasharray="5 5"
+ dot={false}
+ />
+ </AreaChart>
+ </ResponsiveContainer>
+ </div>
+ );
 }
