@@ -36,7 +36,7 @@ export async function POST(request: Request) {
           display_name: username,
           profile_image_url: null,
           banner_url: null,
-          biography: `Verified on AnalyticX ${code}`,
+          biography: `Verified on StatisticX ${code}`,
           location: null,
           website: null,
           followers_count: 0,
@@ -165,7 +165,7 @@ export async function POST(request: Request) {
         existing.claimed_status === "claimed"
       ) {
         return NextResponse.json(
-          { error: "This X account is already claimed by another AnalyticX user." },
+          { error: "This X account is already claimed by another StatisticX user." },
           { status: 409 },
         );
       }

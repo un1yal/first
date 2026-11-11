@@ -109,7 +109,7 @@ export async function POST(request: Request) {
       expiresAt: row.expires_at,
       instructions: challenge.instructions,
       notice:
-        "Bio-code verification proves ownership for AnalyticX claiming. It is not X OAuth authorization.",
+        "Bio-code verification proves ownership for StatisticX claiming. It is not X OAuth authorization.",
     });
   } catch (error) {
     return NextResponse.json(

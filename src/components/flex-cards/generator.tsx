@@ -26,10 +26,10 @@ export function FlexCardGenerator({
   };
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [template, setTemplate] = useState<Template>("dark");
+  const [template, setTemplate] = useState<Template>("light");
   const [busy, setBusy] = useState(false);
 
-  const templates: Template[] = ["minimal", "dark", "light", "analytics"];
+  const templates: Template[] = ["light", "minimal", "dark", "analytics"];
 
   async function renderJpeg() {
     if (!ref.current) throw new Error("Card not ready");
@@ -45,7 +45,7 @@ export function FlexCardGenerator({
     try {
       const dataUrl = await renderJpeg();
       const link = document.createElement("a");
-      link.download = `analyticx-${creator.username}-flex.jpg`;
+      link.download = `statisticx-${creator.username}-flex.jpg`;
       link.href = dataUrl;
       link.click();
       toast.success("JPG downloaded");
@@ -90,16 +90,16 @@ export function FlexCardGenerator({
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-      <div className="overflow-auto rounded-xl border border-border bg-secondary/20 p-6">
+      <div className="overflow-auto rounded-2xl border border-border bg-secondary/30 p-6">
         <div
           ref={ref}
           className={cn(
-            "mx-auto flex h-[420px] w-[680px] flex-col justify-between p-8",
-            template === "dark" && "bg-[#0a0a0a] text-white",
+            "mx-auto flex h-[420px] w-[680px] flex-col justify-between rounded-3xl p-8",
+            template === "dark" && "bg-[#141414] text-white",
             template === "minimal" && "bg-[#111] text-white",
-            template === "light" && "bg-[#f5f5f2] text-[#0a0a0a]",
+            template === "light" && "bg-[#f4f4f2] text-[#111]",
             template === "analytics" &&
-              "bg-[linear-gradient(160deg,#0a0a0a,#171717)] text-white",
+              "bg-[linear-gradient(160deg,#111111,#1c1c1c)] text-white",
           )}
         >
           <div className="flex items-start justify-between">
@@ -111,15 +111,15 @@ export function FlexCardGenerator({
                   "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"
                 }
                 alt=""
-                className="h-16 w-16 rounded-full border border-white/20 object-cover"
+                className="h-16 w-16 rounded-full border border-black/10 object-cover"
               />
               <div>
                 <p className="text-xl font-semibold">{creator.display_name}</p>
                 <p className="text-sm opacity-70">@{creator.username}</p>
               </div>
             </div>
-            <p className="font-brand text-xs tracking-[0.2em] opacity-80">
-              AnalyticX
+            <p className="text-xs font-semibold tracking-tight opacity-80">
+              StatisticX
             </p>
           </div>
 
@@ -138,7 +138,7 @@ export function FlexCardGenerator({
           </div>
 
           <p className="text-[11px] opacity-50">
-            Metrics from AnalyticX · Only values with valid coverage are shown
+            Metrics from StatisticX · Only values with valid coverage are shown
           </p>
         </div>
       </div>

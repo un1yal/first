@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Metric } from "@/components/ui/metric";
 import { demoStore } from "@/lib/demo/store";
 import { isDemoMode } from "@/lib/data/mode";
-import { formatNumber, xProfileUrl } from "@/lib/utils";
+import { xProfileUrl } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -90,7 +90,7 @@ export default async function CreatorPublicPage({
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6">
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6 sm:py-14">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex items-start gap-4">
             <Avatar className="h-16 w-16">
@@ -101,13 +101,13 @@ export default async function CreatorPublicPage({
             </Avatar>
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <h1 className="text-2xl font-semibold tracking-tight">
+                <h1 className="text-3xl font-semibold tracking-tight">
                   {creator.display_name}
                 </h1>
                 {creator.is_blue_verified ? (
                   <Badge variant="outline">X verified</Badge>
                 ) : null}
-                <Badge variant="success">AnalyticX claimed</Badge>
+                <Badge variant="success">StatisticX claimed</Badge>
               </div>
               <p className="mt-1 text-sm text-muted-foreground">@{creator.username}</p>
               {visibility.show_biography ? (
@@ -131,7 +131,7 @@ export default async function CreatorPublicPage({
           </Button>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {visibility.show_followers ? (
             <Metric label="Followers" value={creator.followers_count} />
           ) : null}

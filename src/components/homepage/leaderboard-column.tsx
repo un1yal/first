@@ -19,7 +19,7 @@ export function LeaderboardColumn({
 }) {
   return (
     <section className="animate-fade-up flex h-full flex-col">
-      <h2 className="font-brand mb-4 text-[11px] leading-relaxed text-muted-foreground">
+      <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
         {title}
       </h2>
 
@@ -41,13 +41,13 @@ export function LeaderboardColumn({
             <Link
               key={`${entry.rank}-${entry.creator.id}`}
               href={`/creator/${entry.creator.username}`}
-              className="group rounded-xl border border-border bg-card p-3 transition-colors hover:bg-accent"
+              className="group rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-soft)] transition-colors hover:bg-secondary/40"
             >
               <div className="flex items-center gap-3">
-                <span className="font-brand w-7 text-xs text-muted-foreground">
+                <span className="w-7 text-sm font-semibold text-muted-foreground">
                   #{entry.rank}
                 </span>
-                <Avatar className="h-9 w-9">
+                <Avatar className="h-10 w-10">
                   <AvatarImage
                     src={entry.creator.profile_image_url ?? undefined}
                     alt={entry.creator.display_name ?? entry.creator.username}
@@ -59,7 +59,7 @@ export function LeaderboardColumn({
                   </AvatarFallback>
                 </Avatar>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium group-hover:text-foreground">
+                  <p className="truncate text-sm font-medium">
                     {entry.creator.display_name}
                   </p>
                   <p className="truncate text-xs text-muted-foreground">
@@ -69,7 +69,7 @@ export function LeaderboardColumn({
               </div>
               <div className="mt-3 flex items-center justify-between text-xs">
                 <span className="text-muted-foreground">{metricLabel}</span>
-                <span className="font-medium tabular-nums">
+                <span className="font-semibold tabular-nums">
                   {formatNumber(entry.metric_value)}
                 </span>
               </div>
@@ -80,7 +80,7 @@ export function LeaderboardColumn({
 
       <Link
         href={seeAllHref}
-        className="mt-4 text-xs text-muted-foreground transition-colors hover:text-foreground"
+        className="mt-4 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
         See all →
       </Link>

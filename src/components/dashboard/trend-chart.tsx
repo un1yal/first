@@ -21,51 +21,52 @@ export function TrendChart({
 }) {
   if (!data.length) {
     return (
-      <div className="flex h-64 items-center justify-center rounded-xl border border-dashed border-border text-sm text-muted-foreground">
+      <div className="flex h-64 items-center justify-center rounded-2xl border border-dashed border-border text-sm text-muted-foreground">
         Not enough historical data yet.
       </div>
     );
   }
 
   return (
-    <div className="h-64 w-full">
+    <div className="h-72 w-full">
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={data}>
+        <AreaChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
           <defs>
-            <linearGradient id="axFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity={0.2} />
-              <stop offset="100%" stopColor="#ffffff" stopOpacity={0} />
+            <linearGradient id="sxFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#C8F169" stopOpacity={0.55} />
+              <stop offset="100%" stopColor="#C8F169" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid stroke="#282828" vertical={false} />
+          <CartesianGrid stroke="#ECECE8" vertical={false} />
           <XAxis
             dataKey="date"
-            tick={{ fill: "#a3a3a3", fontSize: 11 }}
+            tick={{ fill: "#6B6B6B", fontSize: 12 }}
             axisLine={false}
             tickLine={false}
           />
           <YAxis
-            tick={{ fill: "#a3a3a3", fontSize: 11 }}
+            tick={{ fill: "#6B6B6B", fontSize: 12 }}
             axisLine={false}
             tickLine={false}
             width={40}
           />
           <Tooltip
             contentStyle={{
-              background: "#111",
-              border: "1px solid #282828",
-              borderRadius: 8,
+              background: "#ffffff",
+              border: "1px solid #E8E8E3",
+              borderRadius: 14,
+              boxShadow: "0 8px 30px rgba(17,17,17,0.06)",
               fontSize: 12,
             }}
-            labelStyle={{ color: "#a3a3a3" }}
+            labelStyle={{ color: "#6B6B6B" }}
           />
           <Area
             type="monotone"
             dataKey={dataKey}
             name={label}
-            stroke="#ffffff"
-            fill="url(#axFill)"
-            strokeWidth={1.5}
+            stroke="#111111"
+            fill="url(#sxFill)"
+            strokeWidth={1.75}
           />
         </AreaChart>
       </ResponsiveContainer>

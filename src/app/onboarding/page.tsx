@@ -116,7 +116,7 @@ export default function OnboardingPage() {
           <CardHeader>
             <CardTitle>Connect your X account</CardTitle>
             <CardDescription>
-              Ownership is verified with a temporary bio code. This does not grant AnalyticX OAuth access to post as you.
+              Ownership is verified with a temporary bio code. This does not grant StatisticX OAuth access to post as you.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-5">
@@ -164,7 +164,7 @@ export default function OnboardingPage() {
                 <p className="text-sm text-muted-foreground">
                   Add this exact code anywhere in your X bio, then click verify. Codes expire in 30 minutes and are single-use.
                 </p>
-                <div className="rounded-xl border border-border bg-card px-4 py-5 text-center font-brand text-lg tracking-[0.2em]">
+                <div className="rounded-xl border border-border bg-card px-4 py-5 text-center text-lg tracking-[0.2em]">
                   {code}
                 </div>
                 <Button onClick={confirmVerification} disabled={loading} className="w-full">
@@ -177,7 +177,7 @@ export default function OnboardingPage() {
               <div className="space-y-4">
                 <Badge variant="success">Claimed</Badge>
                 <p className="text-sm text-muted-foreground">
-                  Your X account is claimed on AnalyticX. You can publish a public profile from settings and sync analytics from your dashboard.
+                  Your X account is claimed on StatisticX. You can publish a public profile from settings and sync analytics from your dashboard.
                 </p>
                 <Button onClick={() => router.push("/dashboard")} className="w-full">
                   Open dashboard

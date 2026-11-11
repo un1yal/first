@@ -23,10 +23,10 @@ export default async function EngagementLeaderboardPage() {
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-10 sm:px-6 sm:py-14">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">
+            <h1 className="text-3xl font-semibold tracking-tight">
               Highest engagement — last 24 hours
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -37,14 +37,14 @@ export default async function EngagementLeaderboardPage() {
           {home.isDemo ? <Badge variant="warning">Demo data</Badge> : null}
         </div>
 
-        <div className="mt-8 space-y-3">
+        <div className="mt-10 space-y-3">
           {all.map((entry) => (
             <Link
               key={entry.id}
               href={`/creator/${entry.creator.username}`}
-              className="flex items-center gap-4 rounded-xl border border-border bg-card p-4 hover:bg-accent"
+              className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)] hover:bg-secondary/40"
             >
-              <span className="font-brand w-8 text-sm text-muted-foreground">
+              <span className="w-8 text-sm font-medium tabular-nums text-muted-foreground">
                 #{entry.rank}
               </span>
               <Avatar>

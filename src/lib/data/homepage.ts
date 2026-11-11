@@ -131,5 +131,5 @@ export function visitorLabel(stats: WeeklyVisitorStats) {
   if (!stats.unique_visitors) {
     return "Unique visitor data is being collected.";
   }
-  return `AnalyticX reached ${formatNumber(stats.unique_visitors)} unique visitors this week.`;
+  return `StatisticX reached ${formatNumber(stats.unique_visitors)} unique visitors this week.`;
 }

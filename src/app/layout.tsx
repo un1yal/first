@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "AnalyticX — Creator Analytics & Marketplace",
-    template: "%s · AnalyticX",
+    default: "StatisticX — Creator Analytics & Marketplace",
+    template: "%s · StatisticX",
   },
   description:
     "Discover creators. Measure influence. Find your next promotion. X creator analytics, discovery, and advertising marketplace.",
@@ -32,7 +32,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full bg-background text-foreground">
         <AppProviders>
-          <div className="noise-overlay" aria-hidden="true" />
           <VisitorTracker />
           {children}
         </AppProviders>

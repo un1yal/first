@@ -1,4 +1,4 @@
--- AnalyticX initial schema
+-- StatisticX initial schema
 -- Supabase PostgreSQL + RLS
 
 create extension if not exists "pgcrypto";

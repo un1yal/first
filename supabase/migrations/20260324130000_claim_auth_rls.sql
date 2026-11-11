@@ -1,4 +1,4 @@
--- AnalyticX: claim flow RLS + profile insert for SSR auth (publishable key only)
+-- StatisticX: claim flow RLS + profile insert for SSR auth (publishable key only)
 -- Run this on project acyzomxqrxhdthtthnvd (statisticx) after deploying the app fix.
 
 -- Allow a signed-in user to create their own profile row if the auth trigger missed it.

@@ -9,7 +9,7 @@ export default function PrivacyPage() {
         <h1 className="text-2xl font-semibold tracking-tight">Privacy notice</h1>
         <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground">
           <p>
-            AnalyticX uses first-party analytics stored in Supabase. We assign an
+            StatisticX uses first-party analytics stored in Supabase. We assign an
             anonymous visitor identifier via a first-party cookie to count unique
             visitors over a rolling seven-day window.
           </p>
@@ -23,8 +23,8 @@ export default function PrivacyPage() {
             statistics.
           </p>
           <p>
-            Creators control whether their AnalyticX profile is public and which
-            statistics are visible. X verification is distinct from AnalyticX
+            Creators control whether their StatisticX profile is public and which
+            statistics are visible. X verification is distinct from StatisticX
             ownership verification.
           </p>
           <p>

@@ -48,7 +48,18 @@ export default function MarketplaceDashboardPage() {
   }
 
   useEffect(() => {
-    void load();
+    let cancelled = false;
+    void (async () => {
+      const res = await fetch("/api/marketplace/mine");
+      const data = await res.json();
+      if (cancelled) return;
+      setPackages(data.packages ?? []);
+      setOffers(data.offers ?? []);
+      setEnabled(Boolean(data.marketplace_enabled ?? true));
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   async function createPackage(e: React.FormEvent) {
@@ -90,7 +101,7 @@ export default function MarketplaceDashboardPage() {
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Marketplace</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Publish promotional packages and manage offers. Payments are handled outside AnalyticX in this release.
+          Publish promotional packages and manage offers. Payments are handled outside StatisticX in this release.
         </p>
       </div>
 

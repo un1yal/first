@@ -19,10 +19,10 @@ export default async function AdminPage() {
       <div className="hidden md:block">
         <DashboardSidebar isAdmin />
       </div>
-      <div className="flex-1 space-y-6 overflow-auto p-4 sm:p-6">
+      <div className="flex-1 space-y-8 overflow-auto p-5 sm:p-8 lg:p-10">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">Admin</h1>
+            <h1 className="text-3xl font-semibold tracking-tight">Admin</h1>
             <p className="mt-1 text-sm text-muted-foreground">
               Platform monitoring, API usage and moderation.
             </p>

@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       currency: "USD",
       duration_days: body.duration_days ? Number(body.duration_days) : null,
       deliverables: body.deliverables ?? null,
-      terms: "Payment arrangements are handled outside AnalyticX in this release.",
+      terms: "Payment arrangements are handled outside StatisticX in this release.",
       is_active: true,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
       price: Number(body.price),
       duration_days: body.duration_days ? Number(body.duration_days) : null,
       deliverables: body.deliverables,
-      terms: "Payment arrangements are handled outside AnalyticX in this release.",
+      terms: "Payment arrangements are handled outside StatisticX in this release.",
     })
     .select("*")
     .single();

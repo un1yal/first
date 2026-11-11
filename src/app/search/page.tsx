@@ -22,9 +22,9 @@ export default async function SearchPage({
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6">
-        <h1 className="text-2xl font-semibold tracking-tight">Search</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-10 sm:px-6 sm:py-14">
+        <h1 className="text-3xl font-semibold tracking-tight">Search</h1>
+        <p className="mt-2 text-sm text-muted-foreground">
           Results for {q ? `@${q}` : "—"}
         </p>
 
@@ -70,7 +70,7 @@ export default async function SearchPage({
                   }
                 >
                   {data.remote.claimed_status === "claimed"
-                    ? "Claimed on AnalyticX"
+                    ? "Claimed on StatisticX"
                     : "Unclaimed"}
                 </Badge>
                 {data.remote.claimed_status === "claimed" ? (
@@ -79,7 +79,7 @@ export default async function SearchPage({
                   </Button>
                 ) : (
                   <p className="text-xs text-muted-foreground">
-                    This creator hasn’t claimed their profile on AnalyticX yet.
+                    This creator hasn’t claimed their profile on StatisticX yet.
                   </p>
                 )}
                 <Button asChild size="sm" variant="outline">

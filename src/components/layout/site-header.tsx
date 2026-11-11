@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { StatisticXWordmark } from "@/components/brand/logo";
 
 export function SiteHeader({
   isAuthenticated = false,
@@ -7,10 +8,10 @@ export function SiteHeader({
   isAuthenticated?: boolean;
 }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="font-brand text-sm tracking-[0.18em]">
-          AnalyticX
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <Link href="/" aria-label="StatisticX home">
+          <StatisticXWordmark />
         </Link>
         <nav className="flex items-center gap-1 sm:gap-2">
           <Button asChild variant="ghost" size="sm">
@@ -26,10 +27,10 @@ export function SiteHeader({
           ) : (
             <>
               <Button asChild variant="ghost" size="sm">
-                <Link href="/login">Login</Link>
+                <Link href="/login">Log in</Link>
               </Button>
               <Button asChild size="sm">
-                <Link href="/signup">Sign Up</Link>
+                <Link href="/signup">Sign up</Link>
               </Button>
             </>
           )}

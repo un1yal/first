@@ -50,7 +50,7 @@ export default function SettingsPage() {
         </CardHeader>
         <CardContent className="space-y-3">
           <p className="text-sm text-muted-foreground">
-            Account deletion removes AnalyticX profile data and retained X-derived snapshots according to retention rules.
+            Account deletion removes StatisticX profile data and retained X-derived snapshots according to retention rules.
           </p>
           <Button variant="destructive" disabled>
             Request account deletion

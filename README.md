@@ -1,4 +1,4 @@
-# AnalyticX
+# StatisticX
 
 Creator analytics, discovery, and promotional marketplace for X (Twitter).
 
@@ -15,7 +15,7 @@ Creator analytics, discovery, and promotional marketplace for X (Twitter).
 
 ## Architecture (brief)
 
-1. **Public surface** — Homepage follows the hand-drawn wireframe (featured slots, centered AnalyticX brand + search, left engagement / right impressions leaderboards). Discover, marketplace, public creator profiles, leaderboards.
+1. **Public surface** — Marketing landing page (hero, dashboard preview, features), discover, marketplace, public creator profiles, and leaderboards.
 2. **Auth & claim** — Supabase email auth. Ownership via time-limited, single-use bio verification code (not X OAuth).
 3. **Ingestion** — `/lib/twitterapi` wraps documented TwitterAPI.io endpoints with timeouts, retries, cost estimates, and mock mode.
 4. **Analytics engine** — Stores creator + post metric snapshots; 24h engagement/impressions are **deltas between timestamped observations**, never lifetime totals labelled as daily.
@@ -89,9 +89,9 @@ npm run build
 
 ## Design
 
-- TRAF-inspired brand direction: near-black surfaces, white type, muted secondary text, `#282828` borders, Departure Mono wordmarks, restrained accent (`#00ff66` success).
-- Homepage composition preserves the wireframe (not a generic SaaS landing page).
-- Dashboard UI follows premium dark SaaS references (sidebar, metric cards, charts).
+- Light-first StatisticX UI inspired by Wise / Brainwave: off-white page (`#F4F4F2`), white cards with large radius, soft shadows, lime accent (`#C8F169`), near-black pill CTAs.
+- Clean left sidebar + search pill for authenticated app pages; Geist typography; tabular stats; soft lime area charts.
+- Optional dark mode tokens (Workly / Lunor style) are available; light is the default.
 
 ## Testing
 

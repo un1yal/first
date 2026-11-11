@@ -15,7 +15,7 @@ export default async function GrowthPage() {
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Growth</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Follower history starts when AnalyticX begins collecting snapshots.
+            Follower history starts when StatisticX begins collecting snapshots.
             Historical data before connection is not invented.
           </p>
         </div>

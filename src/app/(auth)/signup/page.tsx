@@ -64,7 +64,7 @@ export default function SignupPage() {
           <CardHeader>
             <CardTitle>Create account</CardTitle>
             <CardDescription>
-              Start claiming your X creator profile on AnalyticX.
+              Start claiming your X creator profile on StatisticX.
             </CardDescription>
           </CardHeader>
           <CardContent>

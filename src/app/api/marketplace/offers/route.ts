@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       ok: true,
       offer,
-      notice: "Payment settlement is handled outside AnalyticX in this release.",
+      notice: "Payment settlement is handled outside StatisticX in this release.",
     });
   }
 
@@ -88,7 +88,7 @@ export async function POST(request: Request) {
   return NextResponse.json({
     ok: true,
     offer: data,
-    notice: "Payment settlement is handled outside AnalyticX in this release.",
+    notice: "Payment settlement is handled outside StatisticX in this release.",
   });
 }
 

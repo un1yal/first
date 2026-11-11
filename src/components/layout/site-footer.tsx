@@ -1,15 +1,22 @@
 import Link from "next/link";
+import { StatisticXWordmark } from "@/components/brand/logo";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/80 py-8">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 text-center sm:flex-row sm:px-6 sm:text-left">
-        <p className="font-brand text-xs text-muted-foreground">
-          © AnalyticX
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
-          <Link href="/privacy" className="hover:text-foreground">
-            Privacy
+    <footer className="border-t border-border/70 py-12">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 sm:flex-row sm:items-start sm:justify-between sm:px-6">
+        <div>
+          <StatisticXWordmark />
+          <p className="mt-3 max-w-xs text-sm text-muted-foreground">
+            Discover creators. Measure influence. Find your next promotion.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground">
+          <Link href="/discover" className="hover:text-foreground">
+            Discover
+          </Link>
+          <Link href="/marketplace" className="hover:text-foreground">
+            Marketplace
           </Link>
           <Link href="/leaderboards/engagement" className="hover:text-foreground">
             Engagement
@@ -17,11 +24,14 @@ export function SiteFooter() {
           <Link href="/leaderboards/impressions" className="hover:text-foreground">
             Impressions
           </Link>
-          <Link href="/marketplace" className="hover:text-foreground">
-            Marketplace
+          <Link href="/privacy" className="hover:text-foreground">
+            Privacy
           </Link>
         </div>
       </div>
+      <p className="mx-auto mt-10 max-w-6xl px-4 text-xs text-muted-foreground sm:px-6">
+        © {new Date().getFullYear()} StatisticX
+      </p>
     </footer>
   );
 }

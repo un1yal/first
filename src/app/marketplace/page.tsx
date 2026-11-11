@@ -39,16 +39,16 @@ export default async function MarketplacePage() {
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6">
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 sm:py-14">
         <div className="max-w-2xl">
-          <h1 className="text-2xl font-semibold tracking-tight">Marketplace</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Marketplace</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Discover creators offering promotional placements. Submit an enquiry or offer.
-            Payment arrangements are handled outside AnalyticX in this initial release.
+            Payment arrangements are handled outside StatisticX in this initial release.
           </p>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2">
           {listings.map(({ pkg, creator }) => (
             <Card key={pkg.id}>
               <CardHeader>

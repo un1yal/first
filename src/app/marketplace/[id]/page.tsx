@@ -98,7 +98,7 @@ export default function MarketplaceOfferPage() {
                 <Input value={url} onChange={(e) => setUrl(e.target.value)} />
               </div>
               <p className="text-xs text-muted-foreground">
-                Payment settlement and escrow are not processed by AnalyticX in this version.
+                Payment settlement and escrow are not processed by StatisticX in this version.
               </p>
               <Button type="submit" className="w-full">
                 Submit offer

@@ -3,6 +3,7 @@ import { Metric } from "@/components/ui/metric";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TrendChart } from "@/components/dashboard/trend-chart";
 import { getDashboardOverview } from "@/lib/data/dashboard";
 import { formatNumber } from "@/lib/utils";
 
@@ -13,12 +14,14 @@ export default async function DashboardOverviewPage() {
 
   if (!data || ("needsOnboarding" in data && data.needsOnboarding)) {
     return (
-      <div className="mx-auto max-w-lg rounded-xl border border-border bg-card p-8 text-center">
-        <h1 className="text-xl font-semibold">Connect your X account</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+      <div className="mx-auto max-w-lg rounded-[24px] border border-border bg-card p-10 text-center shadow-[var(--shadow-soft)]">
+        <h1 className="text-2xl font-semibold tracking-tight">
+          Connect your X account
+        </h1>
+        <p className="mt-3 text-sm text-muted-foreground">
           Claim and verify ownership to unlock analytics.
         </p>
-        <Button asChild className="mt-6">
+        <Button asChild className="mt-7">
           <Link href="/onboarding">Start onboarding</Link>
         </Button>
       </div>
@@ -29,11 +32,11 @@ export default async function DashboardOverviewPage() {
   if (!creator) return null;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Overview</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <h1 className="text-3xl font-semibold tracking-tight">Overview</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
             @{creator.username} · last sync{" "}
             {creator.last_synced_at
               ? new Date(creator.last_synced_at).toLocaleString()
@@ -46,7 +49,7 @@ export default async function DashboardOverviewPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Metric label="Followers" value={creator.followers_count} />
         <Metric label="Following" value={creator.following_count} />
         <Metric label="Posts" value={creator.posts_count} />
@@ -61,23 +64,44 @@ export default async function DashboardOverviewPage() {
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <Metric
-          label="24h engagement"
-          value={metrics.engagement24h}
-          hint={
-            metrics.coverageValid
-              ? `Coverage across ${metrics.postsCovered} posts`
-              : "Awaiting sufficient snapshot coverage"
-          }
-          trend={metrics.engagement24h ? "up" : "neutral"}
-        />
-        <Metric
-          label="24h impressions"
-          value={metrics.impressions24h}
-          hint="Difference between timestamped view snapshots — not lifetime views"
-          trend={metrics.impressions24h ? "up" : "neutral"}
-        />
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1.4fr_1fr]">
+        <Card>
+          <CardHeader>
+            <CardTitle>Balance trend</CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Follower growth from stored snapshots
+            </p>
+          </CardHeader>
+          <CardContent>
+            <TrendChart
+              data={data.growth.map((g) => ({
+                date: g.date.slice(5),
+                value: g.followers,
+              }))}
+              dataKey="value"
+              label="Followers"
+            />
+          </CardContent>
+        </Card>
+
+        <div className="space-y-4">
+          <Metric
+            label="24h engagement"
+            value={metrics.engagement24h}
+            hint={
+              metrics.coverageValid
+                ? `Coverage across ${metrics.postsCovered} posts`
+                : "Awaiting sufficient snapshot coverage"
+            }
+            trend={metrics.engagement24h ? "up" : "neutral"}
+          />
+          <Metric
+            label="24h impressions"
+            value={metrics.impressions24h}
+            hint="Difference between timestamped view snapshots — not lifetime views"
+            trend={metrics.impressions24h ? "up" : "neutral"}
+          />
+        </div>
       </div>
 
       <Card>
@@ -89,10 +113,10 @@ export default async function DashboardOverviewPage() {
             <table className="w-full min-w-[640px] text-left text-sm">
               <thead className="text-xs text-muted-foreground">
                 <tr className="border-b border-border">
-                  <th className="pb-3 font-medium">Post</th>
-                  <th className="pb-3 font-medium">Impressions</th>
-                  <th className="pb-3 font-medium">Likes</th>
-                  <th className="pb-3 font-medium">Engagement</th>
+                  <th className="pb-4 font-medium">Post</th>
+                  <th className="pb-4 font-medium">Impressions</th>
+                  <th className="pb-4 font-medium">Likes</th>
+                  <th className="pb-4 font-medium">Engagement</th>
                 </tr>
               </thead>
               <tbody>
@@ -101,12 +125,16 @@ export default async function DashboardOverviewPage() {
                   .slice(0, 5)
                   .map((post) => (
                     <tr key={post.id} className="border-b border-border/70">
-                      <td className="py-3 pr-4">
+                      <td className="py-4 pr-4">
                         <p className="line-clamp-2 max-w-md">{post.post_text}</p>
                       </td>
-                      <td className="py-3 tabular-nums">{formatNumber(post.views)}</td>
-                      <td className="py-3 tabular-nums">{formatNumber(post.likes)}</td>
-                      <td className="py-3 tabular-nums">
+                      <td className="py-4 tabular-nums">
+                        {formatNumber(post.views)}
+                      </td>
+                      <td className="py-4 tabular-nums">
+                        {formatNumber(post.likes)}
+                      </td>
+                      <td className="py-4 tabular-nums">
                         {formatNumber(post.engagement)}
                       </td>
                     </tr>

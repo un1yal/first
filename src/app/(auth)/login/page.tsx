@@ -50,7 +50,7 @@ function LoginForm() {
     <Card className="w-full max-w-md">
       <CardHeader>
         <CardTitle>Login</CardTitle>
-        <CardDescription>Access your AnalyticX creator workspace.</CardDescription>
+        <CardDescription>Access your StatisticX creator workspace.</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={onSubmit} className="space-y-4">

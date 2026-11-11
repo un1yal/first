@@ -17,13 +17,18 @@ export function Metric({
     typeof value === "number" ? formatNumber(value) : value ?? "Unavailable";
 
   return (
-    <div className={cn("rounded-xl border border-border bg-card p-4", className)}>
+    <div
+      className={cn(
+        "rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:p-6",
+        className,
+      )}
+    >
       <div className="flex items-center justify-between gap-2">
-        <p className="text-xs text-muted-foreground">{label}</p>
+        <p className="text-sm text-muted-foreground">{label}</p>
         {trend ? (
           <span
             className={cn(
-              "h-1.5 w-1.5 rounded-full",
+              "h-2 w-2 rounded-full",
               trend === "up" && "bg-success",
               trend === "down" && "bg-destructive",
               trend === "neutral" && "bg-muted-foreground",
@@ -31,8 +36,10 @@ export function Metric({
           />
         ) : null}
       </div>
-      <p className="mt-2 text-2xl font-semibold tracking-tight">{display}</p>
-      {hint ? <p className="mt-1 text-xs text-muted-foreground">{hint}</p> : null}
+      <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">
+        {display}
+      </p>
+      {hint ? <p className="mt-2 text-xs text-muted-foreground">{hint}</p> : null}
     </div>
   );
 }

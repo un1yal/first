@@ -1,5 +1,5 @@
 /**
- * Public Supabase config for AnalyticX → project "statisticx".
+ * Public Supabase config for StatisticX → project "statisticx".
  * Uses only the publishable (client-safe) key. Never read or ship a service-role key here.
  */
 
