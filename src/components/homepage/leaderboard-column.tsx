@@ -19,9 +19,7 @@ export function LeaderboardColumn({
 }) {
   return (
     <section className="animate-fade-up flex h-full flex-col">
-      <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-        {title}
-      </h2>
+      <h2 className="mb-4 text-xs font-light text-[#5a5a5a]">{title}</h2>
 
       {disabledReason ? (
         <EmptyState
@@ -41,10 +39,10 @@ export function LeaderboardColumn({
             <Link
               key={`${entry.rank}-${entry.creator.id}`}
               href={`/creator/${entry.creator.username}`}
-              className="group rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-soft)] transition-colors hover:bg-secondary/40"
+              className="corner-brackets group rounded-xl border border-border bg-card p-4 transition-colors hover:bg-[rgba(255,255,255,0.03)]"
             >
               <div className="flex items-center gap-3">
-                <span className="w-7 text-sm font-semibold text-muted-foreground">
+                <span className="w-7 text-sm font-light text-[#5a5a5a]">
                   #{entry.rank}
                 </span>
                 <Avatar className="h-10 w-10">
@@ -59,7 +57,7 @@ export function LeaderboardColumn({
                   </AvatarFallback>
                 </Avatar>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium">
+                  <p className="truncate text-sm font-light">
                     {entry.creator.display_name}
                   </p>
                   <p className="truncate text-xs text-muted-foreground">
@@ -68,8 +66,8 @@ export function LeaderboardColumn({
                 </div>
               </div>
               <div className="mt-3 flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">{metricLabel}</span>
-                <span className="font-semibold tabular-nums">
+                <span className="text-[#5a5a5a]">{metricLabel}</span>
+                <span className="font-light tabular-nums">
                   {formatNumber(entry.metric_value)}
                 </span>
               </div>

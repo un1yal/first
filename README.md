@@ -89,9 +89,9 @@ npm run build
 
 ## Design
 
-- Light-first StatisticX UI inspired by Wise / Brainwave: off-white page (`#F4F4F2`), white cards with large radius, soft shadows, lime accent (`#C8F169`), near-black pill CTAs.
-- Clean left sidebar + search pill for authenticated app pages; Geist typography; tabular stats; soft lime area charts.
-- Optional dark mode tokens (Workly / Lunor style) are available; light is the default.
+- Dark monochrome StatisticX UI inspired by APEX: near-black canvas (`#0B0B0B`), `#131313` panels, hairline borders, white/gray text only.
+- Michroma display wordmark (`STATISTICX`) + Geist body; corner-bracket focus motif on active/hover controls; glass primary actions with keyboard chips.
+- Thin white/gray charts with faint fills; generous negative space; no color accents.
 
 ## Testing
 

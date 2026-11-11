@@ -14,9 +14,10 @@ import {
   Shield,
   LogOut,
   Search,
+  PanelLeftClose,
+  Plus,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import { StatisticXWordmark } from "@/components/brand/logo";
 
 const primaryLinks = [
@@ -48,11 +49,11 @@ function NavLink({
     <Link
       href={href}
       className={cn(
-        "flex items-center gap-3 rounded-full px-3.5 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-secondary/80 hover:text-foreground",
-        active && "bg-[var(--sidebar-active)] font-medium text-foreground",
+        "corner-brackets flex items-center gap-3 rounded-xl px-3 py-2.5 text-[14px] font-light text-muted-foreground transition-colors hover:text-foreground",
+        active && "is-active bg-[rgba(255,255,255,0.04)] text-foreground",
       )}
     >
-      <Icon className="h-4 w-4" />
+      <Icon className="h-4 w-4 stroke-[1.5]" />
       {label}
     </Link>
   );
@@ -79,27 +80,45 @@ export function DashboardSidebar({ isAdmin = false }: { isAdmin?: boolean }) {
   }
 
   return (
-    <aside className="flex h-full w-64 shrink-0 flex-col border-r border-border bg-sidebar px-3 py-4">
-      <div className="px-3 pb-5">
+    <aside className="flex h-full w-[260px] shrink-0 flex-col border-r border-border bg-sidebar px-3 py-4">
+      <div className="mb-5 flex items-center justify-between px-2">
         <Link href="/" aria-label="StatisticX home">
           <StatisticXWordmark />
         </Link>
+        <div className="flex items-center gap-1">
+          <Link
+            href="/search"
+            className="corner-brackets flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground"
+            aria-label="Search"
+          >
+            <Search className="h-4 w-4 stroke-[1.5]" />
+          </Link>
+          <span
+            className="flex h-8 w-8 items-center justify-center rounded-lg text-[#5a5a5a]"
+            aria-hidden
+          >
+            <PanelLeftClose className="h-4 w-4 stroke-[1.5]" />
+          </span>
+        </div>
       </div>
 
       <Link
-        href="/search"
-        className="mx-1 mb-5 flex h-11 items-center gap-2 rounded-full border border-border bg-background px-3.5 text-sm text-muted-foreground transition-colors hover:bg-secondary/50"
+        href="/onboarding"
+        className="corner-brackets is-active mb-6 mx-1 flex h-11 items-center justify-between rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)] px-3.5 text-sm text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
       >
-        <Search className="h-4 w-4" />
-        Search creators…
+        <span className="inline-flex items-center gap-2.5 font-light">
+          <Plus className="h-4 w-4 stroke-[1.5]" />
+          New claim
+        </span>
+        <span className="kbd-chip">⌘N</span>
       </Link>
 
-      <nav className="flex-1 space-y-6 overflow-y-auto px-1">
+      <nav className="flex-1 space-y-7 overflow-y-auto px-1">
         <div>
-          <p className="mb-2 px-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+          <p className="mb-3 px-3 text-[12px] font-light text-[#5a5a5a]">
             Platform
           </p>
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             {primaryLinks.map((link) => (
               <NavLink
                 key={link.href}
@@ -111,10 +130,10 @@ export function DashboardSidebar({ isAdmin = false }: { isAdmin?: boolean }) {
         </div>
 
         <div>
-          <p className="mb-2 px-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+          <p className="mb-3 px-3 text-[12px] font-light text-[#5a5a5a]">
             Tools
           </p>
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             {toolsLinks.map((link) => (
               <NavLink
                 key={link.href}
@@ -135,15 +154,14 @@ export function DashboardSidebar({ isAdmin = false }: { isAdmin?: boolean }) {
       </nav>
 
       <div className="mt-4 border-t border-border px-1 pt-3">
-        <Button
+        <button
           type="button"
-          variant="ghost"
-          className="w-full justify-start gap-3"
+          className="corner-brackets flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-light text-muted-foreground transition-colors hover:text-foreground"
           onClick={() => void signOut()}
         >
-          <LogOut className="h-4 w-4" />
+          <LogOut className="h-4 w-4 stroke-[1.5]" />
           Log out
-        </Button>
+        </button>
       </div>
     </aside>
   );

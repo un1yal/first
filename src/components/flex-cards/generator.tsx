@@ -26,10 +26,10 @@ export function FlexCardGenerator({
   };
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [template, setTemplate] = useState<Template>("light");
+  const [template, setTemplate] = useState<Template>("dark");
   const [busy, setBusy] = useState(false);
 
-  const templates: Template[] = ["light", "minimal", "dark", "analytics"];
+  const templates: Template[] = ["dark", "minimal", "analytics", "light"];
 
   async function renderJpeg() {
     if (!ref.current) throw new Error("Card not ready");
@@ -90,16 +90,16 @@ export function FlexCardGenerator({
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-      <div className="overflow-auto rounded-2xl border border-border bg-secondary/30 p-6">
+      <div className="overflow-auto rounded-xl border border-border bg-[rgba(255,255,255,0.02)] p-6">
         <div
           ref={ref}
           className={cn(
-            "mx-auto flex h-[420px] w-[680px] flex-col justify-between rounded-3xl p-8",
-            template === "dark" && "bg-[#141414] text-white",
-            template === "minimal" && "bg-[#111] text-white",
-            template === "light" && "bg-[#f4f4f2] text-[#111]",
+            "mx-auto flex h-[420px] w-[680px] flex-col justify-between rounded-xl p-8",
+            template === "dark" && "bg-[#0b0b0b] text-[#ededed]",
+            template === "minimal" && "bg-[#131313] text-[#ededed]",
+            template === "light" && "bg-[#ededed] text-[#0b0b0b]",
             template === "analytics" &&
-              "bg-[linear-gradient(160deg,#111111,#1c1c1c)] text-white",
+              "bg-[linear-gradient(160deg,#0b0b0b,#131313)] text-[#ededed]",
           )}
         >
           <div className="flex items-start justify-between">
@@ -111,14 +111,14 @@ export function FlexCardGenerator({
                   "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"
                 }
                 alt=""
-                className="h-16 w-16 rounded-full border border-black/10 object-cover"
+                className="h-16 w-16 rounded-full border border-white/10 object-cover"
               />
               <div>
-                <p className="text-xl font-semibold">{creator.display_name}</p>
-                <p className="text-sm opacity-70">@{creator.username}</p>
+                <p className="text-xl font-light tracking-tight">{creator.display_name}</p>
+                <p className="text-sm opacity-60">@{creator.username}</p>
               </div>
             </div>
-            <p className="text-xs font-semibold tracking-tight opacity-80">
+            <p className="font-display text-[10px] tracking-[0.22em] opacity-70">
               StatisticX
             </p>
           </div>

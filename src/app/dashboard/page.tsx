@@ -14,11 +14,11 @@ export default async function DashboardOverviewPage() {
 
   if (!data || ("needsOnboarding" in data && data.needsOnboarding)) {
     return (
-      <div className="mx-auto max-w-lg rounded-[24px] border border-border bg-card p-10 text-center shadow-[var(--shadow-soft)]">
-        <h1 className="text-2xl font-semibold tracking-tight">
+      <div className="corner-brackets mx-auto max-w-lg rounded-xl border border-border bg-card p-10 text-center">
+        <h1 className="text-2xl font-light tracking-tight">
           Connect your X account
         </h1>
-        <p className="mt-3 text-sm text-muted-foreground">
+        <p className="mt-3 text-sm font-light text-muted-foreground">
           Claim and verify ownership to unlock analytics.
         </p>
         <Button asChild className="mt-7">
@@ -35,8 +35,8 @@ export default async function DashboardOverviewPage() {
     <div className="space-y-8">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight">Overview</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <h1 className="text-3xl font-light tracking-tight">Overview</h1>
+          <p className="mt-2 text-sm font-light text-muted-foreground">
             @{creator.username} · last sync{" "}
             {creator.last_synced_at
               ? new Date(creator.last_synced_at).toLocaleString()
@@ -67,8 +67,8 @@ export default async function DashboardOverviewPage() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1.4fr_1fr]">
         <Card>
           <CardHeader>
-            <CardTitle>Balance trend</CardTitle>
-            <p className="text-sm text-muted-foreground">
+            <CardTitle className="font-light">Engagement trend</CardTitle>
+            <p className="text-sm font-light text-muted-foreground">
               Follower growth from stored snapshots
             </p>
           </CardHeader>
@@ -106,17 +106,17 @@ export default async function DashboardOverviewPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Best-performing tracked posts</CardTitle>
+          <CardTitle className="font-light">Best-performing tracked posts</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[640px] text-left text-sm">
-              <thead className="text-xs text-muted-foreground">
+              <thead className="text-xs text-[#5a5a5a]">
                 <tr className="border-b border-border">
-                  <th className="pb-4 font-medium">Post</th>
-                  <th className="pb-4 font-medium">Impressions</th>
-                  <th className="pb-4 font-medium">Likes</th>
-                  <th className="pb-4 font-medium">Engagement</th>
+                  <th className="pb-4 font-normal">Post</th>
+                  <th className="pb-4 font-normal">Impressions</th>
+                  <th className="pb-4 font-normal">Likes</th>
+                  <th className="pb-4 font-normal">Engagement</th>
                 </tr>
               </thead>
               <tbody>
@@ -125,16 +125,16 @@ export default async function DashboardOverviewPage() {
                   .slice(0, 5)
                   .map((post) => (
                     <tr key={post.id} className="border-b border-border/70">
-                      <td className="py-4 pr-4">
+                      <td className="py-4 pr-4 font-light">
                         <p className="line-clamp-2 max-w-md">{post.post_text}</p>
                       </td>
-                      <td className="py-4 tabular-nums">
+                      <td className="py-4 font-light tabular-nums">
                         {formatNumber(post.views)}
                       </td>
-                      <td className="py-4 tabular-nums">
+                      <td className="py-4 font-light tabular-nums">
                         {formatNumber(post.likes)}
                       </td>
-                      <td className="py-4 tabular-nums">
+                      <td className="py-4 font-light tabular-nums">
                         {formatNumber(post.engagement)}
                       </td>
                     </tr>

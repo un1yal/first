@@ -32,19 +32,20 @@ export function HomepageSearchBar() {
 
   return (
     <form onSubmit={onSubmit} className="animate-fade-up-delay w-full">
-      <div className="relative">
-        <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+      <div className="corner-brackets relative">
+        <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#5a5a5a]" />
         <Input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search an X username…"
-          className="h-14 rounded-full border-border bg-card pl-11 pr-14 text-base shadow-[var(--shadow-soft)]"
+          className="h-14 rounded-xl border-border bg-[rgba(255,255,255,0.03)] pl-11 pr-14 text-base"
           aria-label="Search an X username"
           autoComplete="off"
         />
         <Button
           type="submit"
           size="icon"
+          variant="glass"
           className="absolute right-1.5 top-1.5 h-11 w-11"
           disabled={pending}
           aria-label="Search"

@@ -8,7 +8,7 @@ export function HomepageAuthActions({
 }) {
   if (isAuthenticated) {
     return (
-      <div className="flex justify-center gap-3">
+      <div className="flex justify-start gap-3">
         <Button asChild className="min-w-28">
           <Link href="/dashboard">Open dashboard</Link>
         </Button>
@@ -17,11 +17,11 @@ export function HomepageAuthActions({
   }
 
   return (
-    <div className="flex justify-center gap-3">
+    <div className="flex justify-start gap-3">
       <Button asChild variant="outline" className="min-w-28">
         <Link href="/login">Login</Link>
       </Button>
-      <Button asChild className="min-w-28">
+      <Button asChild variant="glass" className="min-w-28">
         <Link href="/signup">Sign Up</Link>
       </Button>
     </div>

@@ -19,7 +19,7 @@ export function Metric({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:p-6",
+        "corner-brackets rounded-xl border border-border bg-card p-5 sm:p-6",
         className,
       )}
     >
@@ -28,18 +28,18 @@ export function Metric({
         {trend ? (
           <span
             className={cn(
-              "h-2 w-2 rounded-full",
-              trend === "up" && "bg-success",
+              "h-1.5 w-1.5 rounded-full",
+              trend === "up" && "bg-[#ededed]",
               trend === "down" && "bg-destructive",
-              trend === "neutral" && "bg-muted-foreground",
+              trend === "neutral" && "bg-[#5a5a5a]",
             )}
           />
         ) : null}
       </div>
-      <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">
+      <p className="mt-3 text-3xl font-light tracking-tight tabular-nums text-foreground">
         {display}
       </p>
-      {hint ? <p className="mt-2 text-xs text-muted-foreground">{hint}</p> : null}
+      {hint ? <p className="mt-2 text-xs text-[#5a5a5a]">{hint}</p> : null}
     </div>
   );
 }

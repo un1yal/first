@@ -42,7 +42,7 @@ export default async function ImpressionsLeaderboardPage() {
             <Link
               key={entry.id}
               href={`/creator/${entry.creator.username}`}
-              className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-soft)] hover:bg-secondary/40"
+              className="corner-brackets flex items-center gap-4 rounded-xl border border-border bg-card p-5 hover:bg-[rgba(255,255,255,0.03)]"
             >
               <span className="w-8 text-sm font-medium tabular-nums text-muted-foreground">
                 #{entry.rank}
