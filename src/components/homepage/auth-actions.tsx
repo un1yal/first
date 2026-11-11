@@ -8,21 +8,29 @@ export function HomepageAuthActions({
 }) {
   if (isAuthenticated) {
     return (
-      <div className="flex justify-start gap-3">
-        <Button asChild className="min-w-28">
-          <Link href="/dashboard">Open dashboard</Link>
+      <div className="flex w-full justify-center gap-3">
+        <Button asChild variant="glass" className="min-w-32 uppercase tracking-[0.12em]">
+          <Link href="/dashboard">Dashboard</Link>
         </Button>
       </div>
     );
   }
 
   return (
-    <div className="flex justify-start gap-3">
-      <Button asChild variant="outline" className="min-w-28">
-        <Link href="/login">Login</Link>
+    <div className="flex w-full justify-center gap-3">
+      <Button
+        asChild
+        variant="outline"
+        className="min-w-28 uppercase tracking-[0.12em]"
+      >
+        <Link href="/login">Log in</Link>
       </Button>
-      <Button asChild variant="glass" className="min-w-28">
-        <Link href="/signup">Sign Up</Link>
+      <Button
+        asChild
+        variant="glass"
+        className="min-w-28 uppercase tracking-[0.12em]"
+      >
+        <Link href="/signup">Sign up</Link>
       </Button>
     </div>
   );
